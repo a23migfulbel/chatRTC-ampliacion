@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <title>Chat WebRTC</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 2rem auto; }
+    #messages { border: 1px solid #ccc; height: 250px; overflow-y: auto; padding: 8px; margin-bottom: 8px; }
+    li { cursor: pointer; margin: 4px 0; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div id="login">
+    <h2>Com et dius?</h2>
+    <input id="nameInput" placeholder="El teu nom">
+    <button id="joinBtn">Entrar</button>
+  </div>
+
+  <div id="usersView" class="hidden">
+    <h2>Connectats</h2>
+    <p>Clica un nom per iniciar un xat:</p>
+    <ul id="usersList"></ul>
+  </div>
+
+  <div id="chatView" class="hidden">
+    <h2>Xat amb <span id="peerName"></span></h2>
+    <div id="messages"></div>
+    <input id="msgInput" placeholder="Escriu un missatge">
+    <button id="sendBtn">Enviar</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
