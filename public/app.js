@@ -14,6 +14,12 @@ const configuracion = {
   iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
 };
 
+const botonCompartir = document.getElementById('shareScreenBtn');
+const botonDetener = document.getElementById('stopScreenBtn');
+
+const videoLocal = document.getElementById('localVideo');
+const videoRemoto = document.getElementById('remoteVideo');
+
 const pantallaLogin = document.getElementById('login');
 const pantallaUsuarios = document.getElementById('usersView');
 const pantallaChat = document.getElementById('chatView');

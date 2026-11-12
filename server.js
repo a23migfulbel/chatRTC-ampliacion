@@ -39,5 +39,5 @@ wss.on('connection', (ws) => {
   });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10509;
 server.listen(PORT, () => console.log('Servidor en puerto', PORT));
