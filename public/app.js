@@ -10,14 +10,21 @@ let listaUsuarios = [];
 let conexion = null;
 let canal = null;
 
+let streamPantalla = null;
+
 const configuracion = {
   iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
 };
 
 const botonCompartir = document.getElementById('shareScreenBtn');
+console.log("boton compartir:", botonCompartir)
+
 const botonDetener = document.getElementById('stopScreenBtn');
+console.log("boton detener:", botonDetener)
 
 const videoLocal = document.getElementById('localVideo');
+console.log("Vídeo local:", videoLocal);
+
 const videoRemoto = document.getElementById('remoteVideo');
 
 const pantallaLogin = document.getElementById('login');
@@ -182,3 +189,30 @@ inputMensaje.onkeydown = function (evento) {
     enviarMensaje();
   }
 };
+
+async function compartirPantalla() {
+    try {
+        streamPantalla = await navigator.mediaDevices.getDisplayMedia({
+            video: true,
+            audio: false
+        });
+
+        console.log("Pantalla capturada:", streamPantalla);
+
+        videoLocal.srcObject = streamPantalla;
+        await videoLocal.play();
+
+        console.log("Vídeo srcObject:", videoLocal.srcObject);
+        console.log("Vídeo pausado:", videoLocal.paused);
+        console.log("Ancho del vídeo:", videoLocal.videoWidth);
+        console.log("Alto del vídeo:", videoLocal.videoHeight);
+
+        botonCompartir.disabled = true;
+        botonDetener.disabled = false;
+
+    } catch (error) {
+        console.error("Error al compartir pantalla:", error);
+    }
+}
+
+botonCompartir.onclick = compartirPantalla;
